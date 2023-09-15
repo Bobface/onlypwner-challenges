@@ -32,6 +32,7 @@ Challenge instances are executed on a local EVM devnet starting with a clean sta
 - Leaking information about the challenge solution
 - Challenges that involve unfixed bugs in real deployments
 - Challenges that negatively describe real persons or entities
+- Huge challenges with lots of source files and lines of code
 
 ## Submitting your challenge
 Once you are ready to submit, create a PR to the `dev` branch of this repository. 
