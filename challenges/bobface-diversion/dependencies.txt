@@ -1,0 +1,4 @@
+https://github.com/Uniswap/v2-periphery@0335e8f7e1bd1e8d8329fd300aea2ef2f36dd19f
+https://github.com/Uniswap/v2-core@ee547b17853e71ed4e0101ccfd52e70d5acded58
+https://github.com/OpenZeppelin/openzeppelin-contracts@812404cee89cd91d46f6234d03451b07eebf2e35
+https://github.com/Uniswap/solidity-lib@c01640b0f0f1d8a85cba8de378cc48469fcfd9a6
