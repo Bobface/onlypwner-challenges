@@ -5,6 +5,6 @@
 You can delete the above text and insert your PR description here. 
 
 Please check:
-[] I have verified the challenge is working as intended
-[] I have sent the email with information as mentioned in the README
+[ ] I have verified the challenge is working as intended
+[ ] I have sent the email with information as mentioned in the README
   
