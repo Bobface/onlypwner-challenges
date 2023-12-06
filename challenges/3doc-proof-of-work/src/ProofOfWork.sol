@@ -7,9 +7,8 @@ import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract ProofOfWork is IProofOfWork, Ownable {
-
-    IERC20 immutable public darkToken;
-    uint256 immutable public assignmentDuration;
+    IERC20 public immutable darkToken;
+    uint256 public immutable assignmentDuration;
 
     uint256 private difficulty;
     uint256 private minimumDarkness;
@@ -22,7 +21,8 @@ contract ProofOfWork is IProofOfWork, Ownable {
         uint256 bet;
     }
 
-    constructor(IERC20 darkToken_, 
+    constructor(
+        IERC20 darkToken_,
         uint256 assignmentDuration_,
         uint256 protectedSupply
     ) Ownable(msg.sender) {
@@ -38,10 +38,15 @@ contract ProofOfWork is IProofOfWork, Ownable {
         require(darkToken.balanceOf(address(this)) >= minimumDarkness);
     }
 
-    function submitAssignment(address newOwner, uint256 referralCode) external override {
+    function submitAssignment(
+        address newOwner,
+        uint256 referralCode
+    ) external override {
         Assignment memory newAssignment;
 
-        newAssignment.challenge = uint256(blockhash(block.number - 1));
+        newAssignment.challenge =
+            uint256(blockhash(block.number - 1)) ^
+            block.timestamp;
         newAssignment.difficulty = difficulty;
         newAssignment.deadline = block.timestamp + assignmentDuration;
 
@@ -72,15 +77,17 @@ contract ProofOfWork is IProofOfWork, Ownable {
         // should submit right
         uint256 proof = IDireOwner(newOwner).proofOfDreadfulWork();
         require(
-            uint256(keccak256(
-                abi.encode(assignment[newOwner].challenge, proof))) 
-            & assignment[newOwner].difficulty == 0
+            uint256(
+                keccak256(abi.encode(assignment[newOwner].challenge, proof))
+            ) &
+                assignment[newOwner].difficulty ==
+                0
         );
 
         // extra points if you guessed most bits immediately
         uint256 guessedBits = proof ^ assignment[newOwner].bet;
         uint256 count;
-        
+
         for (uint256 i = 0; i < 256; i++) {
             // Check if the i-th bit is 0
             if ((guessedBits & (1 << i)) == 0) {
@@ -88,8 +95,8 @@ contract ProofOfWork is IProofOfWork, Ownable {
             }
         }
 
-        if(count >= 192) minimumDarkness /= 2;
-        
+        if (count >= 192) minimumDarkness /= 2;
+
         delete assignment[newOwner];
 
         // well done, we are friends now

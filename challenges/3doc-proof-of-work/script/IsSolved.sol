@@ -10,7 +10,7 @@ contract IsSolved is Script {
         address user = vm.envAddress("USER");
         DarkToken dt = DarkToken(vm.envAddress("DRK"));
 
-        if(dt.balanceOf(user) >= 10 ether) {
+        if (dt.balanceOf(user) >= 10 ether) {
             console.log("is-solved:true");
         } else {
             console.log("is-solved:false");

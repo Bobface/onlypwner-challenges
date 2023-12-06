@@ -8,12 +8,11 @@ import {console} from "forge-std/console.sol";
 
 contract Deploy is Script {
     function run() external {
+        vm.startBroadcast();
+
         uint256 supply = 20 ether;
-
-        vm.startBroadcast(0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80);
-
         DarkToken dt = new DarkToken("Dark Token", "DRK", supply);
-        ProofOfWork pow = new ProofOfWork(dt, 5 minutes, 15 ether);
+        ProofOfWork pow = new ProofOfWork(dt, 1 minutes, 15 ether);
 
         dt.transfer(address(pow), supply);
 
