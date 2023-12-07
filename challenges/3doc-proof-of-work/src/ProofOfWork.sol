@@ -24,10 +24,11 @@ contract ProofOfWork is IProofOfWork, Ownable {
     constructor(
         IERC20 darkToken_,
         uint256 assignmentDuration_,
-        uint256 protectedSupply
+        uint256 minimumDarkness_
     ) Ownable(msg.sender) {
         darkToken = darkToken_;
         assignmentDuration = assignmentDuration_;
+        minimumDarkness = minimumDarkness_;
 
         difficulty = uint256(type(uint64).max);
     }
