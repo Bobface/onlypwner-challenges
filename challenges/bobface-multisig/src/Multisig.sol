@@ -171,7 +171,7 @@ contract Multisig is IMultisig {
         uint8 v;
         {
             uint256 rawV = uint256(bytes32(payload[0x00:0x20]));
-            require(v <= type(uint8).max, "v");
+            require(rawV <= type(uint8).max, "v");
             v = uint8(rawV);
         }
         bytes32 r = bytes32(payload[0x20:0x40]);
