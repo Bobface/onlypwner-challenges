@@ -1,0 +1,1 @@
+https://github.com/Vectorized/solady@a6a95729f947bb2a24e05e862ba9522c10453a70
