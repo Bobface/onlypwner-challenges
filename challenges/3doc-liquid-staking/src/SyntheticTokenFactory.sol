@@ -1,4 +1,4 @@
-pragma solidity ^0.8.20;
+pragma solidity 0.8.21;
 
 import {IPoolVault} from "./interfaces/IPoolVault.sol";
 import {ISyntheticTokenFactory} from "./interfaces/ISyntheticTokenFactory.sol";
@@ -10,7 +10,7 @@ import {LibString} from "lib/solady/src/utils/LibString.sol";
 import {SafeTransferLib} from "lib/solady/src/utils/SafeTransferLib.sol";
 
 contract SyntheticTokenFactory is ISyntheticTokenFactory {
-    uint currentSequence;
+    uint public currentSequence;
     uint public mintedSupply;
 
     address public feeReceiver;
