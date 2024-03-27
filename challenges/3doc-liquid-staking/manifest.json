@@ -3,6 +3,7 @@
     "author": "3doc",
     "xHandle": "3docSec",
     "difficulty": 3,
+    "hardfork": "latest",
     "uuid": "5a19e0f1-6a28-4a7e-8931-652654d365aa",
-    "version": 1
+    "version": 2
 }

@@ -3,6 +3,7 @@
     "author": "bobface",
     "xHandle": "bobface16",
     "difficulty": 1,
+    "hardfork": "latest",
     "uuid": "746cd2dd-c0c5-4b89-b22f-8d7c36c2327a",
-    "version": 1
+    "version": 2
 }
