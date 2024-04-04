@@ -89,7 +89,7 @@ There are two scripts that set up and check a challenge. Each script is a forge 
 - `SCRIPTER`: The address the scripts use to send transactions
 
 ##### `script/Deploy.sol`
-This script is executed to deploy a new instance of your challenge. It's structure should be:
+This script is executed to deploy a new instance of your challenge. Its structure should be:
 ```
 pragma solidity ...;
 
