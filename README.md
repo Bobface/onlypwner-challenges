@@ -56,6 +56,7 @@ Contains the following JSON fields:
 - `author`: The author of the challenge (your ONLYPWNER username)
 - `xHandle`: Your X/Twitter handle without the `@`
 - `difficulty`: 1-5
+- `hardfork`: The hardfork the challenge should run on. Use `latest` for the default.
 - `uuid`: A unique UUIDv4. You can use an online tool [like this one](https://www.uuidgenerator.net/version4) to generate it.
 - `version`: Should be `1` for new submissions.
 
