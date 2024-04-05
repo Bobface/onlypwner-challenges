@@ -7,12 +7,9 @@ import {console} from "forge-std/console.sol";
 
 contract IsSolved is Script {
     function run() external view {
-        address user = vm.envAddress("USER");
-        Vault vault = Vault(vm.envAddress("Vault"));
+        address safe = vm.envAddress("SAFE");
 
-        if (vault.balanceOf(user) == 0 && 
-            address(vault).balance == 0 && 
-            user.balance == 0) {
+        if (vault.balanceOf(safe) == 100 ether) {
             console.log("is-solved:true");
         } else {
             console.log("is-solved:false");
