@@ -12,17 +12,29 @@ interface IERC721 is IERC165 {
     /// (`to` == 0). Exception: during contract creation, any number of NFTs
     /// may be created and assigned without emitting Transfer. At the time of
     /// any transfer, the approved address for that NFT (if any) is reset to none.
-    event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
+    event Transfer(
+        address indexed _from,
+        address indexed _to,
+        uint256 indexed _tokenId
+    );
 
     /// @dev This emits when the approved address for an NFT is changed or
     /// reaffirmed. The zero address indicates there is no approved address.
     /// When a Transfer event emits, this also indicates that the approved
     /// address for that NFT (if any) is reset to none.
-    event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);
+    event Approval(
+        address indexed _owner,
+        address indexed _approved,
+        uint256 indexed _tokenId
+    );
 
     /// @dev This emits when an operator is enabled or disabled for an owner.
     /// The operator can manage all NFTs of the owner.
-    event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
+    event ApprovalForAll(
+        address indexed _owner,
+        address indexed _operator,
+        bool _approved
+    );
 
     /// @notice Count all NFTs assigned to an owner
     /// @dev NFTs assigned to the zero address are considered invalid, and this
@@ -50,7 +62,12 @@ interface IERC721 is IERC165 {
     /// @param _to The new owner
     /// @param _tokenId The NFT to transfer
     /// @param data Additional data with no specified format, sent in call to `_to`
-    function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes calldata data) external;
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        bytes calldata data
+    ) external;
 
     /// @notice Transfers the ownership of an NFT from one address to another address
     /// @dev This works identically to the other function with an extra data parameter,
@@ -58,7 +75,11 @@ interface IERC721 is IERC165 {
     /// @param _from The current owner of the NFT
     /// @param _to The new owner
     /// @param _tokenId The NFT to transfer
-    function safeTransferFrom(address _from, address _to, uint256 _tokenId) external;
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) external;
 
     /// @notice Transfer ownership of an NFT -- THE CALLER IS RESPONSIBLE
     /// TO CONFIRM THAT `_to` IS CAPABLE OF RECEIVING NFTS OR ELSE
@@ -70,7 +91,11 @@ interface IERC721 is IERC165 {
     /// @param _from The current owner of the NFT
     /// @param _to The new owner
     /// @param _tokenId The NFT to transfer
-    function transferFrom(address _from, address _to, uint256 _tokenId) external;
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) external;
 
     /// @notice Change or reaffirm the approved address for an NFT
     /// @dev The zero address indicates there is no approved address.
@@ -98,7 +123,10 @@ interface IERC721 is IERC165 {
     /// @param _owner The address that owns the NFTs
     /// @param _operator The address that acts on behalf of the owner
     /// @return True if `_operator` is an approved operator for `_owner`, false otherwise
-    function isApprovedForAll(address _owner, address _operator) external view returns (bool);
+    function isApprovedForAll(
+        address _owner,
+        address _operator
+    ) external view returns (bool);
 }
 
 /// @dev Note: the ERC-165 identifier for this interface is 0x150b7a02.
@@ -115,9 +143,12 @@ interface IERC721TokenReceiver {
     /// @param _data Additional data with no specified format
     /// @return `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
     ///  unless throwing
-    function onERC721Received(address _operator, address _from, uint256 _tokenId, bytes calldata _data)
-        external
-        returns (bytes4);
+    function onERC721Received(
+        address _operator,
+        address _from,
+        uint256 _tokenId,
+        bytes calldata _data
+    ) external returns (bytes4);
 }
 
 /**

@@ -39,11 +39,20 @@ contract Vault is IERC165, IERC721, IERC721Errors {
         safeTransferFrom(from, to, tokenId);
     }
 
-    function safeTransferFrom(address from, address to, uint256 tokenId) public {
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public {
         safeTransferFrom(from, to, tokenId, "");
     }
 
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public {
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory data
+    ) public {
         _requireZero(tokenId);
 
         if (owner != from) {
@@ -62,8 +71,13 @@ contract Vault is IERC165, IERC721, IERC721Errors {
 
         _owner.call{value: address(this).balance}("");
 
-        bytes4 retval = IERC721TokenReceiver(to).onERC721Received(_operator, from, tokenId, data);
-        if(retval != IERC721TokenReceiver.onERC721Received.selector) {
+        bytes4 retval = IERC721TokenReceiver(to).onERC721Received(
+            _operator,
+            from,
+            tokenId,
+            data
+        );
+        if (retval != IERC721TokenReceiver.onERC721Received.selector) {
             revert ERC721InvalidReceiver(to);
         }
     }
@@ -73,20 +87,24 @@ contract Vault is IERC165, IERC721, IERC721Errors {
         return operator;
     }
 
-    function supportsInterface(bytes4 interfaceId) public pure override returns (bool) {
-        return
-            interfaceId == type(IERC721).interfaceId;
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public pure override returns (bool) {
+        return interfaceId == type(IERC721).interfaceId;
     }
 
     function setApprovalForAll(address _operator, bool approved) public {
-        if(approved) {
+        if (approved) {
             approve(_operator, 0);
         } else if (_operator == operator) {
             operator = owner;
         }
     }
 
-    function isApprovedForAll(address _owner, address _operator) public view returns (bool) {
+    function isApprovedForAll(
+        address _owner,
+        address _operator
+    ) public view returns (bool) {
         return (_owner == owner && _operator == operator);
     }
 
@@ -104,5 +122,4 @@ contract Vault is IERC165, IERC721, IERC721Errors {
         owner = newOwner;
         operator = newOwner;
     }
-    
 }

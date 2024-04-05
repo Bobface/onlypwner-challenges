@@ -7,13 +7,20 @@ import {console} from "forge-std/console.sol";
 
 contract Deploy is Script {
     function run() external {
+        vm.startBroadcast();
+
         address user = vm.envAddress("USER");
-        address safeAddress = address(uint160(uint256(keccak256("this is safe!"))));
+        address safeAddress = address(
+            uint160(uint256(keccak256("this is safe!")))
+        );
         uint256 supply = 100 ether;
 
-        vm.startBroadcast();
         Vault vault = new Vault(user);
-        address(vault).call{value: supply}("");
+        (bool ok, ) = address(vault).call{value: supply}("");
+        if (!ok) {
+            // This should never happen, but just in case
+            revert("Failed to send funds to vault");
+        }
 
         console.log("address:Vault", address(vault));
         console.log("address:SAFE", address(safeAddress));
