@@ -48,6 +48,7 @@ forge script \
     --rpc-url <YOUR RPC URL HERE> \ # The RPC to communicate with
     --private-key be0a5d9f38057fa406c987fd1926f7bfc49f094dc4e138fc740665d179e6a56a \ # The generated private key
     --with-gas-price 0 \ # Do not pay for gas
+    --priority-gas-price 0 \ # Do not pay for gas
     SolveTutorial # Execute our solution script
 ```
 
